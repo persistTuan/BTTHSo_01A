@@ -34,12 +34,12 @@
                         for($i = 1; $i <= 5; $i++):
                             $id = $i;
                             $tenTheLoai = "the loai";
-                            $href_edit_category = $_SERVER['DOCUMENT_ROOT']."/musiclife/admin/edit_category.php?id=".$id;
+                            $href_edit_category = "../admin/edit_category.php?id=".$id;
                     ?>
                     <tr>
                         <td scope="row"><?=$id?></td>
                         <td scope="row"><?=$tenTheLoai?></td>
-                        <td scope="row"><a href=<?= $_SERVER['DOCUMENT_ROOT']; ?> . "/musiclife/admin/edit_category.php?id="><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td scope="row"><a href= "<?= $href_edit_category; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td scope="row"><a href=""><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                     <?php endfor ?>
