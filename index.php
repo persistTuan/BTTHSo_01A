@@ -26,7 +26,7 @@
             <img style="width: 100%;" class="img-fluid" src="../musiclife/public/img/music.jpg" alt="ảnh music">
             <h2 style="text-align: center; color: blue">Top bài hát yêu thích</h2>
 
-            <div class="card-music d-flex justify-content-between">
+            <div class="card-music d-flex  flex-wrap">
                 <?php
                     for($i=1; $i<=5; $i++):
                         $detail = [];
@@ -38,7 +38,7 @@
                         $detail["tacGia"] = "Nguyễn văn giả";
                         $jsonDetail = json_encode($detail); 
                 ?>
-                <a href="../musiclife/detail.php?valueDetail=<?= urlencode($jsonDetail); ?>" class="card"
+                <a href="../musiclife/detail.php?valueDetail=<?= urlencode($jsonDetail); ?>" class="card m-1"
                     style="width: 18rem;">
                     <img src="../musiclife/public/img/music.jpg" class="card-img-top" alt="đây là ảnh">
                     <div class="card-body">
