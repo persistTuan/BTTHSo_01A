@@ -16,7 +16,7 @@
 
         <?php  include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/header_admin.php"; ?>
         <div class="menu">
-            <a class="btn btn-success" href="">Thêm mới</a>
+            <a class="btn btn-success" href="../admin/add_category.php">Thêm mới</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -28,13 +28,24 @@
                 </thead>
                 <tbody>
                     <?php
-                        $conn = "connect pdo";
-                        $sql = "query ";
-                        $result = "return result select";
-                        for($i = 1; $i <= 5; $i++):
-                            $id = $i;
-                            $tenTheLoai = "the loai";
-                            $href_edit_category = "../admin/edit_category.php?id=".$id;
+                        ini_set('display_errors', 1);
+                        ini_set('display_startup_errors', 1);
+                        error_reporting(E_ALL);
+
+                        // $pdo = new PDO("mysql:host=127.0.0.1:3307; dbname = BTTH01_CSE485", "root", "140103");
+                        // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        try{
+                            $pdo = new PDO("mysql:host=127.0.0.1:3307; dbname=BTTH01_CSE485", "root", "140103");
+                            echo "Connection";
+                        }catch(PDOException $e){
+                            echo "disconnected" .$e->getMessage();
+                        }
+                        
+                        $data = $pdo->query("SELECT * FROM theloai;")->fetchAll();
+                        foreach($data as $row):
+                            $id = $row['ma_tloai'];
+                            $tenTheLoai = $row['ten_tloai'];
+                            $href_edit_category = "../admin/edit_category.php?id=".$id."&ten_tloai=".$tenTheLoai;
                     ?>
                     <tr>
                         <td scope="row"><?=$id?></td>
@@ -42,7 +53,7 @@
                         <td scope="row"><a href= "<?= $href_edit_category; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td scope="row"><a href=""><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
-                    <?php endfor ?>
+                    <?php endforeach ?>
                     
                 </tbody>
             </table>
