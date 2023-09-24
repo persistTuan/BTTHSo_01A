@@ -17,6 +17,11 @@
         <?php  include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/header_admin.php"; ?>
         <div class="menu">
             <a class="btn btn-success" href="../admin/add_category.php">Thêm mới</a>
+            <?php 
+                if(isset($_GET['message'])):
+            ?>
+            <div class="alert alert-danger mt-2"><?=$_GET['message'] ?></div>
+            <?php endif; ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -36,7 +41,6 @@
                         // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         try{
                             $pdo = new PDO("mysql:host=127.0.0.1:3307; dbname=BTTH01_CSE485", "root", "140103");
-                            echo "Connection";
                         }catch(PDOException $e){
                             echo "disconnected" .$e->getMessage();
                         }
@@ -46,12 +50,13 @@
                             $id = $row['ma_tloai'];
                             $tenTheLoai = $row['ten_tloai'];
                             $href_edit_category = "../admin/edit_category.php?id=".$id."&ten_tloai=".$tenTheLoai;
+                            $href_delete_category = "../manager/delete_category_manager.php?id=".$id."&ten_tloai=".$tenTheLoai;
                     ?>
                     <tr>
                         <td scope="row"><?=$id?></td>
                         <td scope="row"><?=$tenTheLoai?></td>
                         <td scope="row"><a href= "<?= $href_edit_category; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td scope="row"><a href=""><i class="fa-solid fa-trash"></i></a></td>
+                        <td scope="row"><a href="<?= $href_delete_category; ?>"><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                     <?php endforeach ?>
                     

@@ -23,7 +23,6 @@
             $numberEffect = $result->rowCount();
             $pdo = null;
             if($numberEffect > 0) {
-                
                 return true;
             }
             return false;
@@ -48,5 +47,18 @@
 
         }
         
+        public static function Delete($query = null){
+            if($query == null){
+                return false;
+            }
+            self::$pdo = new PDO("mysql:host=127.0.0.1:3307; dbname=BTTH01_CSE485", "root", "140103");
+            $result = self::$pdo->prepare($query);
+            $result->execute();
+            $numberEffect = $result->rowCount();
+            if($numberEffect > 0) {
+                return true;
+            }
+            return false;
+        }
     }
 ?>

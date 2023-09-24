@@ -17,35 +17,48 @@
         <?php  include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/header_admin.php"; ?>
         <div class="menu">
             <h2>Sửa thông tin thể loại</h2>
-            <form method="post" action="" class="clearfix">
+            <form id="myform" method="post" action="../manager/edit_category_manager.php" class="clearfix">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Mã thể loại</span>
-                    <input name="id" readonly value="<?= $_GET['id'] ?>" type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input name="id" readonly value="<?= $_GET['id'] ?>" type="text" class="form-control"
+                        placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Tên thể loại</span>
-                    <input name="ten_tloai" value="<?= $_GET['ten_tloai'] ?>" type="text" class="form-control tenTheLoai" placeholder="Username" aria-label="Username"
+                    <input name="ten_tloai" value="<?= $_GET['ten_tloai'] ?>" type="text"
+                        class="form-control tenTheLoai" placeholder="Username" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="buttton">
                     <a class="btn btn-warning float-end" href="../admin/category.php">Quay lại</a>
-                    <button type="" class="btn-save btn btn-success float-end me-2" href="../manager/edit_category_manager.php">Lưu lại</button>
+                    <a class="btn-save btn btn-success float-end me-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Lưu lại</a>
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" form="myform" type="button" id="saveChange" class="btn btn-primary" >Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
+
         </div>
-        
+
         <?php include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/footer.php"; ?>
     </div>
-
-    <SCript>
-        $('.btn-save').click(function(){
-            <?php
-                $value_ten_tloai = $_POST['ten_tloai'];
-                echo $value_ten_tloai;
-            ?>
-        })
-    </SCript>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
