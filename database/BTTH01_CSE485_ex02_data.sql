@@ -132,6 +132,7 @@ insert into theloai (ten_tloai) values ('Varanus salvator');
 insert into theloai (ten_tloai) values ('Otaria flavescens');
 insert into theloai (ten_tloai) values ('Canis aureus');
 insert into theloai (ten_tloai) values ('Aegypius occipitalis');
+truncate table theloai;
 
 ---------------------------------------------------------------------
 
