@@ -19,7 +19,7 @@
 </head>
 
 <body class="p-4">
-
+    <?php include "mysql.php"; ?>
     <div class="container-fluid">
         <?php include "../musiclife/share/header.php"; ?>
         <div class="menu">
@@ -28,14 +28,21 @@
 
             <div class="card-music d-flex  flex-wrap">
                 <?php
-                    for($i=1; $i<=5; $i++):
+                $query = "select * from baiviet limit 5";
+                $result = Mysql::select($query);
+                
+                if($result != null):
+
+                    foreach($result as $row):
                         $detail = [];
-                        $detail["img"] = "đây là ảnh";
-                        $detail["nameSong"] = "Tên bài hát";
-                        $detail["theLoai"] = "Nhạc trữ tình";
-                        $detail["tomTat"] = "Em và anh hai đứa quen nhau thật tình cờ. Lời bài hát của anh từ bài hát 'Cây và gió'";
-                        $detail["noiDung"] = "Em và anh hai đứa quen nhau thật tình cờ. Lời hát của anh từ bài hát 'Cây và gió'";
-                        $detail["tacGia"] = "Nguyễn văn giả";
+                        $detail["img"] = $row['hinhanh'];
+                        $detail["nameSong"] = $row['ten_bhat'];
+                        $detail["ma_tloai"] = $row['ma_tloai'];
+                
+                        $detail["theLoai"] = Mysql::select("select ten_tloai from theloai where ma_tloai = '{$row["ma_tloai"]}'")[0]['ten_tloai']; //
+                        $detail["tomTat"] = $row['tomtat'];
+                        $detail["noiDung"] = $row['noidung'];
+                        $detail["tacGia"] = Mysql::select("select ten_tgia from tacgia where ma_tgia = '{$row["ma_tgia"]}'")[0]['ten_tgia'];
                         $jsonDetail = json_encode($detail); 
                 ?>
                 <a href="../musiclife/detail.php?valueDetail=<?= urlencode($jsonDetail); ?>" class="card m-1"
@@ -45,7 +52,8 @@
                         <p class="card-text text-center"><?=$detail["nameSong"]?></p>
                     </div>
                 </a>
-                <?php endfor ?>
+                <?php endforeach ?>
+                <?php endif ?>
             </div>
         </div>
         <?php include "../musiclife/share/footer.php"; ?>
