@@ -15,6 +15,15 @@
 
     <div class="container-fluid">
         <?php include "../musiclife/share/header.php"; ?>
+        <?php
+           if(isset($_GET['respon'])){
+            echo "{$_GET['respon']}";
+           }
+            
+            if(isset($_GET['mes'])){
+                echo "đănh nhập thất bại";
+            }
+        ?>
         <div class="menu d-flex justify-content-center">
             <div class="login p-3 rounded-4" style="width:30%; background-color: #7F7F7F;">
                 <div class="signup d-flex justify-content-between align-items-lg-center">
@@ -27,21 +36,21 @@
                 </div>
                 <hr>
                 <div class="input container-fluid">
-                    <form action="" class="clearfix">
+                    <form method="post" action="./manager/login_managment.php" class="clearfix">
                         <div class="mb-3 userName input-group flex-nowrap">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            <input name="userName" type="text" class="form-control" placeholder="Username" aria-label="Username"
                                 aria-describedby="addon-wrapping">
                         </div>
                         <div class="mb-3 passwork input-group flex-nowrap">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-key"></i></span>
-                            <input type="text" class="form-control" placeholder="passwork" aria-label="Username"
+                            <input name="password" type="text" class="form-control" placeholder="password" aria-label="Username"
                                 aria-describedby="addon-wrapping">
                         </div>
                         <div class="remember text-light">
                             <input type="checkbox"> <label for="">Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-warning px-5 float-end " href="">Login</button>
+                        <button type="submit" class="btn btn-warning px-5 float-end ">Login</button>
                     </form>
                 </div>
 

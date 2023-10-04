@@ -59,7 +59,6 @@
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                         <td scope="row"><a href="" data-bs-toggle="modal" data-bs-target="#modalId<?=$id;?>"><i
                                     class="fa-solid fa-trash"></i></a></td>
-
                     </tr>
 
                     <!-- Modal Body -->

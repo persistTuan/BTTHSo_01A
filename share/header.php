@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="text-dark nav-link btn btn-light btn-dangNhap" href="../musiclife/login.php">Đăng nhập</a>
             </li>
+            <li class="nav-item">
+                    <a class="nav-link btn btn-light text-dark" href="<?php $_SERVER['DOCUMENT_ROOT']?>/musiclife/users/index.php" >User</a>
+            </li>
         </ul>
     </div>
     <div class="container-right">

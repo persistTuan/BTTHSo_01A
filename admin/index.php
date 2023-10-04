@@ -14,7 +14,9 @@
 
     <div class="container-fluid">
 
-        <?php  include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/header_admin.php";  ; ?>
+        <?php
+        
+          include $_SERVER['DOCUMENT_ROOT'] ."/musiclife/share/header_admin.php";  ; ?>
         <div class="menu d-flex justify-content-around flex-wrap">
             <?php
                 $numberUsers = 30;
